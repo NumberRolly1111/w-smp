@@ -22,8 +22,13 @@
     const rank = document.createElement("span"); rank.className = "top-rank"; rank.textContent = i + 1;
     const img = document.createElement("img");
     img.className = "top-head"; img.width = 32; img.height = 32; img.loading = "lazy"; img.alt = "";
-    img.src = "https://mc-heads.net/avatar/" + encodeURIComponent(String(p.uuid).replace(/-/g, "")) + "/64";
-    img.onerror = () => { img.onerror = null; img.style.visibility = "hidden"; };
+    const heads = [
+      "https://mc-heads.net/avatar/" + encodeURIComponent(p.name) + "/64",
+      "https://minotar.net/helm/" + encodeURIComponent(p.name) + "/64.png",
+    ];
+    let h = 0;
+    img.onerror = () => { h += 1; if (h < heads.length) img.src = heads[h]; else { img.onerror = null; img.style.visibility = "hidden"; } };
+    img.src = heads[0];
     const name = document.createElement("span"); name.className = "top-name"; name.textContent = p.name;
     if (p.online) { const dot = document.createElement("i"); dot.className = "top-on"; dot.title = "Сейчас в игре"; name.appendChild(dot); }
     const main = document.createElement("b"); main.className = "top-val";

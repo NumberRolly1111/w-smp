@@ -91,9 +91,10 @@
   function setSkin(p) {
     const id = plain(p.uuid);
     const sources = [
-      "https://mc-heads.net/body/" + id + "/360",
-      "https://crafatar.com/renders/body/" + p.uuid + "?overlay&scale=8",
+      // сервер с офлайн-UUID: скин ищем по нику, UUID оставлен запасным вариантом
+      "https://mc-heads.net/body/" + encodeURIComponent(p.name) + "/360",
       "https://minotar.net/armor/body/" + encodeURIComponent(p.name) + "/360.png",
+      "https://mc-heads.net/body/" + id + "/360",
     ];
     let i = 0;
     el.skinBox.classList.remove("no-skin");
