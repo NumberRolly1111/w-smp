@@ -482,3 +482,132 @@ body::before {
 .cart-content, .fields, .cart-items { grid-template-columns: minmax(0, 1fr); }
 .cart-body { overflow-x: hidden; }
 .cart-item .cart-price { flex: none; }
+
+/* ==========================================================================
+   Паспорт игрока (разметка: passport/index.html, логика: js/passport.js)
+   ========================================================================== */
+.pp { padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 7vw, 5rem); }
+/* атрибут hidden не должен перебиваться display из классов (раньше пустая карточка была видна всегда) */
+.pp-search[hidden], .pp-card[hidden], .pp-login[hidden], .pp-owner[hidden], .pp-note[hidden] { display: none; }
+
+.pp-hero { max-width: 44rem; margin-bottom: clamp(1.4rem, 3vw, 2rem); }
+.pp .pp-hero h1 { position: relative; display: inline-block; margin: 0 0 1rem; padding-bottom: 0.9rem; letter-spacing: -0.02em; }
+.pp .pp-hero h1::after { content: ""; position: absolute; left: 0; bottom: 0; width: 64px; height: 4px; border-radius: 4px; background: var(--accent-grad); }
+.pp-lead { margin: 0; color: var(--muted); font-size: 1.12rem; }
+.pp .eyebrow .ic { width: 1.15em; height: 1.15em; }
+
+/* Поиск */
+.pp-search {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 0.6rem; margin: 0 0 1.2rem; padding: 0.6rem;
+  border: 1px solid var(--line-soft); border-radius: var(--r-lg); background: rgba(13, 20, 29, 0.75);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm);
+}
+.pp-field { position: relative; display: block; min-width: 0; }
+.pp-field .ic { position: absolute; left: 1rem; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.pp-search input { flex: none; width: 100%; min-height: 50px; padding: 0.7rem 1rem 0.7rem 2.9rem; border-radius: var(--r-md); border: 1px solid var(--line-soft); background: var(--panel-2); color: var(--text); font: 600 1rem var(--font-body); }
+.pp-search input::placeholder { color: #7d8ea4; font-weight: 500; }
+.pp-search input:focus { outline: none; border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(53, 212, 255, 0.18); }
+.pp-search .btn, .pp-link .btn, .pp-login .btn, .pp-owner .btn { width: auto; min-height: 50px; padding: 0.7rem 1.3rem; border-radius: var(--r-md); }
+
+/* Кнопки внутри паспорта без варианта раньше были серыми кнопками браузера */
+.pp .btn:not(.btn-primary) { background: rgba(18, 26, 36, 0.85); border-color: var(--line-soft); color: var(--text); }
+.pp .btn:not(.btn-primary):hover { border-color: var(--accent-line); transform: translateY(-2px); }
+.pp .btn.pp-danger { color: #ff7a87; border-color: rgba(255, 107, 107, 0.45); }
+.pp .btn.pp-danger:hover { border-color: #ff6b6b; background: rgba(255, 90, 110, 0.1); }
+
+/* Сообщения */
+.pp-note {
+  display: flex; align-items: flex-start; gap: 0.75rem; margin: 0 0 1.2rem; padding: 1rem 1.2rem; border-radius: var(--r-md);
+  border: 1px solid var(--accent-line); background: var(--accent-soft); color: var(--text); line-height: 1.55;
+}
+.pp-note::before {
+  content: "i"; flex: none; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%;
+  background: var(--accent-grad); color: #04121f; font: 800 0.85rem/1 var(--font-body);
+}
+
+/* Карточка паспорта */
+.pp-card {
+  position: relative; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(1.2rem, 3vw, 2.2rem); align-items: stretch;
+  padding: clamp(1rem, 2.5vw, 1.6rem); border: 1px solid var(--accent-line); border-radius: var(--r-xl); overflow: hidden;
+  background: radial-gradient(70% 90% at 100% 0%, rgba(34, 160, 254, 0.16), transparent 65%), linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 40%), var(--panel);
+  box-shadow: var(--shadow-lg), var(--glow-accent); animation: pp-in 0.6s var(--ease);
+}
+.pp-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--accent-grad); }
+@keyframes pp-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.pp-skin {
+  position: relative; display: grid; place-items: end center; min-height: 380px; padding-top: 2.6rem; border-radius: var(--r-lg); overflow: hidden;
+  border: 1px solid var(--line-soft);
+  background: radial-gradient(60% 55% at 50% 64%, rgba(34, 160, 254, 0.34), transparent 72%),
+    linear-gradient(rgba(120, 160, 210, 0.06) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(120, 160, 210, 0.06) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(180deg, #0f2236, var(--panel-2));
+}
+.pp-skin img { max-height: 400px; }
+.pp-skin.no-skin { place-items: center; }
+.pp-tag {
+  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 1; padding: 0.35rem 0.7rem; border-radius: 999px; border: 1px solid var(--accent-line);
+  background: rgba(8, 12, 18, 0.65); color: var(--accent-2); font: 700 0.66rem/1 var(--font-body); letter-spacing: 0.14em; text-transform: uppercase;
+}
+.pp-info { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.pp-head { margin-bottom: 1.3rem; }
+.pp .pp-head h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.pp-badge { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.8rem; border-radius: 999px; border-color: var(--line-soft); }
+.pp-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.pp-badge.on::before { background: var(--ok); animation: dot-pulse 2.2s ease-out infinite; }
+.pp-stats { gap: 0.8rem; margin-bottom: 1.4rem; }
+.pp-stat {
+  position: relative; gap: 0.2rem; padding: 1rem 1.1rem 1.1rem; border-radius: var(--r-md); border-color: var(--line-soft);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent), var(--panel-2);
+}
+.pp-stat-ic { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 0.5rem; border-radius: 10px; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent-2); }
+.pp-stat-ic .ic { width: 20px; height: 20px; }
+.pp-stat b { color: var(--text); font-variant-numeric: tabular-nums; }
+.pp-link input { flex: 1 1 220px; min-height: 50px; padding: 0.7rem 1rem; border-radius: var(--r-md); border: 1px solid var(--line-soft); background: var(--panel-2); color: var(--muted); font: 500 0.95rem var(--font-body); text-overflow: ellipsis; }
+.pp-link input:focus { outline: none; border-color: var(--accent-2); color: var(--text); box-shadow: 0 0 0 3px rgba(53, 212, 255, 0.18); }
+
+/* Вход и кабинет владельца */
+.pp-login, .pp-owner {
+  margin-top: 1.2rem; padding: clamp(1.3rem, 3vw, 2rem); border: 1px solid var(--line-soft); border-radius: var(--r-xl);
+  background: radial-gradient(70% 90% at 0% 0%, rgba(34, 160, 254, 0.1), transparent 65%), var(--panel); box-shadow: var(--shadow-md);
+}
+.pp-login h2, .pp-owner h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
+.pp-sub { color: var(--muted); }
+.pp-sub b { color: var(--text); }
+.pp-code {
+  margin: 0.6rem 0 1.1rem; padding: 0.8rem 1.6rem; border: 1px dashed var(--accent-2); border-radius: var(--r-lg); color: var(--accent-2);
+  background: linear-gradient(135deg, rgba(34, 160, 254, 0.14), rgba(53, 212, 255, 0.06)); text-shadow: 0 0 24px rgba(53, 212, 255, 0.45);
+}
+.pp-cmd code { border-radius: var(--r-sm); border-color: var(--line-soft); color: var(--accent-2); font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.pp-warn { padding: 0.8rem 1rem; border: 1px solid rgba(255, 176, 32, 0.4); border-radius: var(--r-md); background: rgba(255, 176, 32, 0.08); color: #ffcf6b; }
+.pp-timer { font-variant-numeric: tabular-nums; color: var(--text); }
+.pp .pp-owner h3 { margin: 1.5rem 0 0.7rem; color: var(--muted); font: 700 0.78rem var(--font-body); letter-spacing: 0.14em; }
+.pp-sess { border-radius: var(--r-md); border-color: var(--line-soft); }
+.pp-sess small { display: block; margin-top: 0.15rem; }
+.pp-actions .btn { flex: 0 1 auto; }
+
+/* Три факта под карточкой */
+.pp-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: clamp(2rem, 5vw, 3rem); }
+.pp-fact { padding: 1.4rem; border: 1px solid var(--line-soft); border-radius: var(--r-lg); background: var(--panel); transition: transform 0.35s var(--ease), border-color 0.3s; }
+.pp-fact:hover { transform: translateY(-4px); border-color: var(--accent-line); }
+.pp-fact-ic { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 0.9rem; border-radius: var(--r-md); background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent-2); }
+.pp .pp-fact h3 { margin: 0 0 0.4rem; color: var(--text); font: 700 1.05rem var(--font-body); letter-spacing: 0; text-transform: none; }
+.pp-fact p { margin: 0; color: var(--muted); line-height: 1.6; }
+.pp-fact code { padding: 0.1rem 0.4rem; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line-soft); color: var(--accent-2); font-size: 0.9em; white-space: nowrap; }
+
+@media (max-width: 900px) { .pp-facts { grid-template-columns: 1fr; } }
+@media (max-width: 800px) {
+  .pp-card { grid-template-columns: 1fr; }
+  .pp-skin { min-height: 320px; }
+  .pp-skin img { max-height: 320px; }
+}
+@media (max-width: 640px) {
+  .pp-search { grid-template-columns: 1fr; }
+  .pp-search .btn { width: 100%; }
+  .pp-link-row .btn { flex: 1 1 100%; }
+  .pp-actions .btn { flex: 1 1 100%; }
+}
+@media (max-width: 480px) { .pp-stats { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .pp-card, .pp-badge.on::before { animation: none; } .pp-fact { transition: none; } }
+
+/* Паспорт: плашка над заголовком, а не рядом с ним */
+.pp-hero .eyebrow { display: flex; width: fit-content; }

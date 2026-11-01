@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#080c12">
   <link rel="stylesheet" href="../css/style.css?v=46">
-  <link rel="stylesheet" href="../css/theme.css?v=1">
+  <link rel="stylesheet" href="../css/theme.css?v=2">
 </head>
 <body data-root="../" data-page="passport">
 
@@ -34,18 +34,24 @@
 <main>
   <section class="pp">
     <div class="wrap">
-      <p class="ct-eyebrow"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-2 2.3-3 4-3s3.2 1 4 3"/></svg>Паспорт игрока</p>
-      <h1 id="pp-title">Паспорт игрока</h1>
+      <header class="pp-hero" data-reveal>
+        <p class="eyebrow"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17c.8-2 2.3-3 4-3s3.2 1 4 3"/></svg>Паспорт игрока</p>
+        <h1 id="pp-title">Паспорт игрока</h1>
+        <p class="pp-lead">Время в игре, баланс Вардов и скин. Паспорт открывается по ссылке, входить не нужно.</p>
+      </header>
 
       <!-- Бэкенд ещё не подключён (в js/passport-config.js пустой адрес) -->
       <div class="pp-note" id="pp-disabled" hidden>
         Паспорт игрока скоро заработает. Сервис ещё настраивается, загляните позже.
       </div>
 
-      <form class="pp-search" id="pp-search" autocomplete="off">
-        <input id="pp-nick" type="text" maxlength="17" placeholder="Ник игрока" aria-label="Ник игрока" spellcheck="false" autocapitalize="off">
+      <form class="pp-search" id="pp-search" autocomplete="off" data-reveal style="--d:80ms">
+        <label class="pp-field">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="pp-nick" type="text" maxlength="17" placeholder="Ник игрока" aria-label="Ник игрока" spellcheck="false" autocapitalize="off">
+        </label>
         <button class="btn btn-primary" type="submit">Открыть паспорт</button>
-        <button class="btn pp-login-btn" type="button" id="pp-login-btn">Войти через Minecraft</button>
+        <button class="btn btn-dark pp-login-btn" type="button" id="pp-login-btn">Войти через Minecraft</button>
       </form>
 
       <p class="pp-note" id="pp-msg" role="alert" hidden></p>
@@ -53,6 +59,7 @@
       <!-- Паспорт: слева персонаж, справа характеристики -->
       <article class="pp-card" id="pp-card" hidden>
         <div class="pp-skin" id="pp-skin-box">
+          <span class="pp-tag">WardenSMP · Паспорт</span>
           <img id="pp-skin" alt="" width="260" height="420">
         </div>
         <div class="pp-info">
@@ -61,14 +68,20 @@
             <span class="pp-badge" id="pp-badge"></span>
           </div>
           <div class="pp-stats">
-            <div class="pp-stat"><small>Наиграно</small><b id="pp-time">—</b></div>
-            <div class="pp-stat"><small>Баланс</small><b id="pp-balance">—</b></div>
+            <div class="pp-stat">
+              <span class="pp-stat-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <small>Наиграно</small><b id="pp-time">—</b>
+            </div>
+            <div class="pp-stat">
+              <span class="pp-stat-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 9l3.5 7 3.5-7"/></svg></span>
+              <small>Баланс</small><b id="pp-balance">—</b>
+            </div>
           </div>
           <div class="pp-link">
             <small>Ссылка на паспорт</small>
             <div class="pp-link-row">
               <input id="pp-url" type="text" readonly aria-label="Ссылка на паспорт">
-              <button class="btn" type="button" id="pp-copy">Копировать</button>
+              <button class="btn btn-dark" type="button" id="pp-copy">Копировать</button>
             </div>
           </div>
         </div>
@@ -79,6 +92,24 @@
 
       <!-- Кабинет владельца: виден только владельцу паспорта -->
       <section class="pp-owner" id="pp-owner" hidden></section>
+
+      <div class="pp-facts">
+        <div class="pp-fact" data-reveal>
+          <span class="pp-fact-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></svg></span>
+          <h3>Открывается по ссылке</h3>
+          <p>Паспорт публичный: отправь ссылку другу, ему не нужно входить.</p>
+        </div>
+        <div class="pp-fact" data-reveal style="--d:80ms">
+          <span class="pp-fact-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v6c0 5 3.5 8 7 9 3.5-1 7-4 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <h3>Данные с сервера</h3>
+          <p>Время игры и баланс приходят прямо с сервера, вручную их изменить нельзя.</p>
+        </div>
+        <div class="pp-fact" data-reveal style="--d:160ms">
+          <span class="pp-fact-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V8a5 5 0 0 1 10 0v3"/></svg></span>
+          <h3>Вход через игру</h3>
+          <p>Чтобы управлять доступом, подтверди вход командой <code>/passport link</code> в игре.</p>
+        </div>
+      </div>
     </div>
   </section>
 </main>
