@@ -336,7 +336,7 @@ body::before {
   background: radial-gradient(90% 70% at 100% 0%, color-mix(in srgb, var(--tag, var(--accent)) 14%, transparent), transparent 70%), var(--panel);
   transition: transform 0.35s var(--ease), border-color 0.3s, box-shadow 0.35s;
 }
-.promo-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--tag, var(--accent)), transparent); }
+.promo-card::before { content: ""; position: absolute; left: 12%; right: 12%; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--tag, var(--accent)), transparent); pointer-events: none; }
 .promo-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--tag, var(--accent)) 60%, var(--line)); box-shadow: var(--shadow-md); }
 .promo-card:has(.card-cat[data-tag="deal"]) { --tag: #3ddc84; }
 .promo-card:has(.card-cat[data-tag="new"]) { --tag: #35d4ff; }
@@ -532,7 +532,7 @@ body::before {
   background: radial-gradient(70% 90% at 100% 0%, rgba(34, 160, 254, 0.16), transparent 65%), linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 40%), var(--panel);
   box-shadow: var(--shadow-lg), var(--glow-accent); animation: pp-in 0.6s var(--ease);
 }
-.pp-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--accent-grad); }
+.pp-card::before { content: ""; position: absolute; left: 12%; right: 12%; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-2), transparent); pointer-events: none; }
 @keyframes pp-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .pp-skin {
   position: relative; display: grid; place-items: end center; min-height: 380px; padding-top: 2.6rem; border-radius: var(--r-lg); overflow: hidden;
@@ -611,3 +611,21 @@ body::before {
 
 /* Паспорт: плашка над заголовком, а не рядом с ним */
 .pp-hero .eyebrow { display: flex; width: fit-content; }
+
+/* Паспорт: скин без рамки справа от данных, стоит на нижней кромке карточки */
+.pp-card { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); align-items: stretch; padding-bottom: 0; }
+.pp-info { padding-bottom: clamp(1rem, 2.5vw, 1.6rem); }
+.pp-tag { position: static; align-self: flex-start; margin-bottom: 1rem; }
+.pp-skin { min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; overflow: visible; place-items: end center; align-self: end; }
+.pp-skin::before {
+  content: ""; position: absolute; left: 50%; bottom: 4%; width: 120%; aspect-ratio: 1; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(closest-side, rgba(34, 160, 254, 0.34), rgba(34, 160, 254, 0.1) 55%, transparent 75%);
+}
+.pp-skin img { position: relative; z-index: 1; max-height: 400px; filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.55)); }
+.pp-skin.no-skin { min-height: 160px; place-items: center; }
+@media (max-width: 800px) {
+  .pp-card { grid-template-columns: 1fr; padding-bottom: clamp(1rem, 2.5vw, 1.6rem); }
+  .pp-skin { order: -1; align-self: center; }
+  .pp-skin img { max-height: 300px; }
+  .pp-info { padding-bottom: 0; }
+}
