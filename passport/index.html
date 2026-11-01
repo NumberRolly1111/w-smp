@@ -93,6 +93,18 @@
       <!-- Кабинет владельца: виден только владельцу паспорта -->
       <section class="pp-owner" id="pp-owner" hidden></section>
 
+      <section class="pp-top" id="pp-top" aria-labelledby="pp-top-h" hidden>
+        <div class="pp-top-head">
+          <h2 id="pp-top-h">Топ игроков</h2>
+          <div class="pp-tabs" role="group" aria-label="Сортировка топа">
+            <button type="button" class="on" data-by="playtime" aria-selected="true">По времени</button>
+            <button type="button" data-by="balance" aria-selected="false">По балансу</button>
+          </div>
+        </div>
+        <div class="top-list" id="pp-top-list"></div>
+        <p class="pp-top-msg" id="pp-top-msg" hidden></p>
+      </section>
+
       <div class="pp-facts">
         <div class="pp-fact" data-reveal>
           <span class="pp-fact-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 11 18.7l1-1"/></svg></span>
@@ -121,5 +133,6 @@
 <script src="../js/ui.js?v=1"></script>
 <script src="../js/passport-config.js?v=45"></script>
 <script src="../js/passport.js?v=45"></script>
+<script src="../js/top.js?v=1"></script>
 </body>
 </html>

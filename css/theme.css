@@ -629,3 +629,27 @@ body::before {
   .pp-skin img { max-height: 300px; }
   .pp-info { padding-bottom: 0; }
 }
+
+/* Паспорт: топ игроков */
+.pp-top { margin-top: clamp(2rem, 5vw, 3rem); }
+.pp-top[hidden] { display: none; }
+.pp-top-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; margin-bottom: 1rem; }
+.pp .pp-top-head h2 { margin: 0; font: 800 clamp(1.4rem, 3vw, 1.9rem) var(--font-display, var(--font-body)); letter-spacing: 0; text-transform: none; }
+.pp-tabs { display: inline-flex; padding: 4px; gap: 4px; border: 1px solid var(--line-soft); border-radius: 999px; background: var(--panel); }
+.pp-tabs button { padding: 0.5rem 1rem; border: 0; border-radius: 999px; background: none; color: var(--muted, #9aa7b8); font: 600 0.9rem var(--font-body); cursor: pointer; transition: background 0.2s, color 0.2s; }
+.pp-tabs button:hover { color: var(--text); }
+.pp-tabs button.on { background: var(--accent-soft); color: var(--accent-2); box-shadow: inset 0 0 0 1px var(--accent-line); }
+.top-list { display: grid; gap: 0.5rem; }
+.top-row { display: grid; grid-template-columns: 2rem 32px minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; padding: 0.7rem 1rem; border: 1px solid var(--line-soft); border-radius: var(--r-md); background: var(--panel); color: var(--text); text-decoration: none; transition: transform 0.25s var(--ease), border-color 0.25s, background 0.25s; }
+.top-row:hover, .top-row:focus-visible { transform: translateX(4px); border-color: var(--accent-line); background: var(--accent-soft); }
+.top-rank { color: var(--muted, #9aa7b8); font: 800 1.05rem var(--font-body); text-align: center; }
+.top-1 .top-rank { color: #ffc83d; } .top-2 .top-rank { color: #c9d3df; } .top-3 .top-rank { color: #d98b4e; }
+.top-1 { border-color: rgba(255, 200, 61, 0.35); }
+.top-head { width: 32px; height: 32px; border-radius: 6px; image-rendering: pixelated; background: var(--panel-2, #111a26); }
+.top-name { display: flex; align-items: center; gap: 0.5rem; min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.top-on { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 8px #3ddc84; }
+.top-nums { display: grid; text-align: right; line-height: 1.25; }
+.top-val { font-weight: 800; }
+.top-sub { color: var(--muted, #9aa7b8); font-size: 0.8rem; }
+.pp-top-msg { padding: 1rem; color: var(--muted, #9aa7b8); text-align: center; }
+@media (max-width: 540px) { .top-row { grid-template-columns: 1.6rem 28px minmax(0, 1fr) auto; gap: 0.6rem; padding: 0.6rem 0.75rem; } .top-head { width: 28px; height: 28px; } }
