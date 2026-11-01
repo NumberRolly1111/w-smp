@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Оплата прошла | WardenSMP</title>
+  <meta name="description" content="Спасибо за покупку на WardenSMP. Платёж получен.">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <meta name="theme-color" content="#080c12">
+  <link rel="stylesheet" href="../../css/style.css?v=46">
+  <link rel="stylesheet" href="../../css/theme.css?v=1">
+  <!-- Заказ оплачен: очищаем корзину раньше, чем main.js нарисует счётчик товаров -->
+  <script>try { localStorage.removeItem("wsmp-cart-v2"); } catch (e) {}</script>
+</head>
+<body data-root="../../" data-page="payment-success">
+
+<div id="site-header"></div>
+
+<main>
+  <section class="nf nf-ok">
+    <div class="nf-code" aria-hidden="true">&#10003;</div>
+    <h1>Оплата прошла</h1>
+    <p>Спасибо за покупку! Мы получили платёж, заказ обрабатывается.</p>
+    <p class="nf-note">Если товар не появился в игре, напишите в <a href="https://t.me/w_smp_bot" target="_blank" rel="noopener">поддержку в Telegram</a> или создайте тикет в <a href="https://discord.gg/DGthvPcgk8" target="_blank" rel="noopener">Discord</a>. Укажите игровой ник и e-mail из заказа.</p>
+    <div class="nf-actions">
+      <a class="btn btn-primary" href="../../">На главную</a>
+      <a class="btn btn-outline" href="../../privileges.html">В каталог</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="../../js/layout.js?v=46"></script>
+<script src="../../js/main.js?v=46"></script>
+<script src="../../js/ui.js?v=1"></script>
+</body>
+</html>
