@@ -89,6 +89,7 @@
 
   // ---------- паспорт ----------
   function setSkin(p) {
+    if (!el.skin || !el.skinBox) return;   // скин на странице убран
     const id = plain(p.uuid);
     const sources = [
       // сервер с офлайн-UUID: скин ищем по нику, UUID оставлен запасным вариантом
