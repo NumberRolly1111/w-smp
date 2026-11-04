@@ -207,7 +207,7 @@ button { font-family: inherit; }
 
 @media (max-width: 1000px) { .tier { grid-template-columns: 1fr 1fr; } .tier-head { grid-column: 1 / -1; } }
 @media (max-width: 800px) { .ban-grid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .tier { grid-template-columns: 1fr; gap: 1.2rem; } .tiers { padding-left: 2.1rem; } 
+@media (max-width: 560px) { .tier { grid-template-columns: 1fr; gap: 1.2rem; } .tiers { padding-left: 2.1rem; } .tl-item { --lx: calc(-2.1rem + 0.7rem + 1px); } }
 /* Contacts */
 .contacts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding-bottom: clamp(3rem, 7vw, 5rem); }
 .contact { display: flex; align-items: center; gap: 1rem; padding: 1.3rem; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; color: var(--text); transition: border-color 0.15s, box-shadow 0.15s; }
