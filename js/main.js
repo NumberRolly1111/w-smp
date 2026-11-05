@@ -145,6 +145,7 @@ const PHOTO = {
   voin:     { f: "voin",     w: 513,  c: "#4ade80" },
   // Иконки (не бюсты): стоят по центру карточки, с лёгким покачиванием
   unmute:   { f: "unmute",   w: 560,  c: "#ff3b3b", icon: 1 }, unban: { f: "unban", w: 560, c: "#22b8d8", icon: 1 },
+  title:    { f: "title",    w: 560,  c: "#e0a458", icon: 1 },
 };
 const artHtml = (p, eager) => PHOTO[p.id]
   ? `<img class="rank-photo${PHOTO[p.id].wide ? " wide" : ""}${PHOTO[p.id].icon ? " icon" : ""}" src="img/privileges/${PHOTO[p.id].f}.webp?v=3" alt="" width="${PHOTO[p.id].w}" height="560" decoding="async"${eager ? "" : ' loading="lazy"'}>`
