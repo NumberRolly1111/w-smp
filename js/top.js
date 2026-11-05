@@ -10,7 +10,7 @@
   const list = document.getElementById("pp-top-list");
   const msg = document.getElementById("pp-top-msg");
   const tabs = Array.from(sec.querySelectorAll("[data-by]"));
-  const CURRENCY = "Вардов";
+  const CURRENCY = "Монет";
   const fmt = (n, d) => Number(n).toLocaleString("ru-RU", { maximumFractionDigits: d });
   const cache = {};
   let run = 0;

@@ -7,7 +7,7 @@
   if (!card) return;
 
   const API = String(window.WSMP_PASSPORT_API || "").replace(/\/+$/, "");
-  const CURRENCY = "Вардов";                         // единица баланса (Vault Economy)
+  const CURRENCY = "Монет";                         // единица баланса (Vault Economy)
   const NICK_RE = /^[.A-Za-z0-9_]{1,17}$/;
   const UUID_RE = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i;
   const SESSION_KEY = "wsmp-session";
